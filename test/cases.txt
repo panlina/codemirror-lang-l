@@ -1,41 +1,41 @@
 # Booleans
 
-#t
-#f
+#true
 
 ==>
 
-Program(Boolean, Boolean)
+Program(Boolean)
 
 # Identifiers
 
-one
-Two_Three
+oneTwo_Three
 
 ==>
 
-Program(Identifier, Identifier)
+Program(Identifier)
 
 # Strings
 
-"hello"
 "one\"\\two"
 
 ==>
 
-Program(String, String)
+Program(String)
 
 # Applications
 
-(begin
-  (when #t
-    (print (concat "hello" " " "world")))
-  (print "DONE"))
+print reverse "hello world"
+
+==>
+
+Program(Application(Identifier, Application(Identifier, String)))
+
+# Parentheses
+
+(f g) h
 
 ==>
 
 Program(Application(
-  Identifier,
-  Application(Identifier, Boolean, Application(
-    Identifier, Application(Identifier, String, String, String)))
-  Application(Identifier, String)))
+  Parentheses("(", Application(Identifier, Identifier), ")"),
+  Identifier))
