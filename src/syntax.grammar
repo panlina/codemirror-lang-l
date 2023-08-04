@@ -6,7 +6,10 @@
 expression {
   Identifier |
   String |
+  Number |
   Boolean |
+  Null |
+  Undefined |
   Application { expression !application expression } |
   Parentheses { "(" expression ")" }
 }
@@ -14,7 +17,10 @@ expression {
 @tokens {
   Identifier { $[a-zA-Z_]$[a-zA-Z_0-9]* }
   String { '"' (!["\\] | "\\" _)* '"' }
+  Number { $[0-9]+ }
   Boolean { "#true" | "#false" }
+  Null { "#null" }
+  Undefined { "#undefined" }
   LineComment { "//" ![\n]* }
   space { $[ \t\n\r]+ }
   "(" ")"

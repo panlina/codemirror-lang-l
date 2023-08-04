@@ -1,3 +1,19 @@
+# Undefineds
+
+#undefined
+
+==>
+
+Program(Undefined)
+
+# Nulls
+
+#null
+
+==>
+
+Program(Null)
+
 # Booleans
 
 #true
@@ -21,6 +37,14 @@ Program(Identifier)
 ==>
 
 Program(String)
+
+# Numbers
+
+12
+
+==>
+
+Program(Number)
 
 # Applications
 
