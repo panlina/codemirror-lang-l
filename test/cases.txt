@@ -46,6 +46,43 @@ Program(String)
 
 Program(Number)
 
+# Objects
+
+{ a: 0, b: 1, c: 2 }
+
+==>
+
+Program(Object(
+  "{", ObjectProperty(Identifier, ":", Number), ",",
+  ObjectProperty(Identifier, ":", Number), ",",
+  ObjectProperty(Identifier, ":", Number), "}"))
+
+# Arrays
+
+[a, b, c]
+
+==>
+
+Program(Array(
+  "[", Identifier, ",", Identifier, ",", Identifier, "]"))
+
+# Tuples
+
+{a, b, c}
+
+==>
+
+Program(Tuple(
+  "{", Identifier, ",", Identifier, ",", Identifier, "}"))
+
+# Object tuple ambiguity
+
+{}
+
+==>
+
+Program(Object("{", "}"))
+
 # Applications
 
 print reverse "hello world"

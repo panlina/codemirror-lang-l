@@ -10,6 +10,9 @@ expression {
   Boolean |
   Null |
   Undefined |
+  Object[@dynamicPrecedence=1] { "{" ~brace commaSep<ObjectProperty { Identifier ":" expression }> "}" } |
+  Array { "[" commaSep<expression> "]" } |
+  Tuple { "{" ~brace commaSep<expression> "}" } |
   Application { expression !application expression } |
   Parentheses { "(" expression ")" }
 }
@@ -24,6 +27,11 @@ expression {
   LineComment { "//" ![\n]* }
   space { $[ \t\n\r]+ }
   "(" ")"
+  "[" "]"
+  "{" "}"
+  "," ":"
 }
+
+commaSep<content> { "" | content ("," content)* }
 
 @detectDelim
