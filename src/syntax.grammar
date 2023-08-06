@@ -1,7 +1,10 @@
 @top Program { expression }
 
 @skip { space | LineComment }
-@precedence { application @right }
+@precedence {
+  member @left
+  application @right
+}
 
 expression {
   Identifier |
@@ -13,6 +16,8 @@ expression {
   Object[@dynamicPrecedence=1] { "{" ~brace commaSep<ObjectProperty { Identifier ":" expression }> "}" } |
   Array { "[" commaSep<expression> "]" } |
   Tuple { "{" ~brace commaSep<expression> "}" } |
+  Property { expression !member "." Identifier } |
+  Element { expression !member "@" expression } |
   Application { expression !application expression } |
   Parentheses { "(" expression ")" }
 }
@@ -30,6 +35,7 @@ expression {
   "[" "]"
   "{" "}"
   "," ":"
+  "." "@"
 }
 
 commaSep<content> { "" | content ("," content)* }

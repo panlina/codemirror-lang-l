@@ -83,6 +83,32 @@ Program(Tuple(
 
 Program(Object("{", "}"))
 
+# Properties
+
+a.b
+
+==>
+
+Program(Property(Identifier, ".", Identifier))
+
+# Elements
+
+a@0
+
+==>
+
+Program(Element(Identifier, "@", Number))
+
+# Property element precedence
+
+a@0.b
+
+==>
+
+Program(Property(
+  Element(Identifier, "@", Number), ".",
+  Identifier))
+
 # Applications
 
 print reverse "hello world"
