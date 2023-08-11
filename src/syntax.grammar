@@ -5,6 +5,7 @@
   member @left
   application @right
   add-unary
+  multiply @left
 }
 
 expression {
@@ -21,6 +22,7 @@ expression {
   Element { expression !member "@" expression } |
   Application { expression !application expression } |
   Add { !add-unary ("+" | "-") expression } |
+  Multiply { expression !multiply ("*" | "/") expression } |
   Parentheses { "(" expression ")" }
 }
 
@@ -39,6 +41,8 @@ expression {
   "," ":"
   "." "@"
   "+" "-"
+  "*" "/"
+  @precedence { LineComment, "/" }
 }
 
 commaSep<content> { "" | content ("," content)* }

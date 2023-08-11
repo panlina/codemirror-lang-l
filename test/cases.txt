@@ -125,6 +125,14 @@ Program(Application(Identifier, Application(Identifier, String)))
 
 Program(Add("-", Add("+", Number)))
 
+# Multiply
+
+0*1/2
+
+==>
+
+Program(Multiply(Multiply(Number, "*", Number), "/", Number))
+
 # Parentheses
 
 (f g) h
