@@ -4,6 +4,7 @@
 @precedence {
   member @left
   application @right
+  add-unary
 }
 
 expression {
@@ -19,6 +20,7 @@ expression {
   Property { expression !member "." Identifier } |
   Element { expression !member "@" expression } |
   Application { expression !application expression } |
+  Add { !add-unary ("+" | "-") expression } |
   Parentheses { "(" expression ")" }
 }
 
@@ -36,6 +38,7 @@ expression {
   "{" "}"
   "," ":"
   "." "@"
+  "+" "-"
 }
 
 commaSep<content> { "" | content ("," content)* }

@@ -117,6 +117,14 @@ print reverse "hello world"
 
 Program(Application(Identifier, Application(Identifier, String)))
 
+# Add unary
+
+-+1
+
+==>
+
+Program(Add("-", Add("+", Number)))
+
 # Parentheses
 
 (f g) h
